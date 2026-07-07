@@ -4,8 +4,8 @@
 
 set -euo pipefail
 
-IMAGE="xiaohongshu-cards"
-CONTAINER="xiaohongshu-cards"
+IMAGE="rednote-cards"
+CONTAINER="rednote-cards"
 PORT="${PORT:-8080}"
 
 # ── 颜色输出 ───────────────────────────────────────────────────
