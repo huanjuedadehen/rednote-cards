@@ -11,11 +11,6 @@ const defaultData: CardData = {
   tags: ["专注", "认知", "数字时代"],
 }
 
-// 字数统计
-function countChars(text: string): number {
-  return text.replace(/\s/g, "").length
-}
-
 // 阅读时间（中文约300字/分钟）
 function readMinutes(charCount: number): number {
   return Math.max(1, Math.round(charCount / 300))
