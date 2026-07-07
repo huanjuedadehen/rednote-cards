@@ -17,8 +17,13 @@ error()   { echo -e "\033[1;31m[ERROR]\033[0m $*"; exit 1; }
 # ── 子命令 ─────────────────────────────────────────────────────
 
 cmd_build() {
+  local extra_args=()
+  if [[ "${1:-}" == "--no-cache" ]]; then
+    extra_args+=("--no-cache")
+    shift
+  fi
   info "构建镜像: $IMAGE ..."
-  docker build -t "$IMAGE" .
+  docker build -t "$IMAGE" "${extra_args[@]}" .
   success "镜像构建完成: $IMAGE"
 }
 
@@ -113,7 +118,7 @@ cmd_help() {
 
 # ── 入口 ───────────────────────────────────────────────────────
 case "${1:-help}" in
-  build)   cmd_build   ;;
+  build)   cmd_build "${2:-}"   ;;
   run)     cmd_run     ;;
   stop)    cmd_stop    ;;
   restart) cmd_restart ;;
